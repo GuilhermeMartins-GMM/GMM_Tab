@@ -62,10 +62,10 @@
     <div id="loading-screen">Wait...</div>
 
     <div class="portal-container">
-      <h2>Type your email... jk, search here.</h2>
+      <h2>Type Your Email.</h2>
       
       <form action="https://google.com" method="GET" target="_blank" class="search-form">
-        <input type="text" name="q" placeholder="Type Your Search" required class="search-input" />
+        <input type="text" name="q" placeholder="I'm kidding, type your search" required class="search-input" />
         <button type="submit" class="search-btn">Search</button>
       </form>
 
@@ -107,7 +107,7 @@
       window.addEventListener('load', () => {
         const loader = document.getElementById('loading-screen');
         loader.style.opacity = '0';
-        setTimeout(() => loader.remove(), 1400);
+        setTimeout(() => loader.remove(), 1600);
       });
     </script>
 
