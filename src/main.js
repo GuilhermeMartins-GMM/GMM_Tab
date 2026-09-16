@@ -21,24 +21,23 @@ const equalButton = document.querySelector('#btn-equal');
 let currentExpression = '';
 
 btnNasa.addEventListener('click', () => {
-
-  /* */
   const currentDisplay = window.getComputedStyle(appElement).display;
 
-  if (appElement.style.display === 'none') {
+  if (currentDisplay === 'none') {
     appElement.style.display = 'block'; 
   } else {
     appElement.style.display = 'none';
   }
 });
 
+
 btnCalc.addEventListener('click', () => {
-  if (calcElement.style.display === 'none') {
+  const currentDisplay = window.getComputedStyle(calcElement).display;
+
+  if (currentDisplay === 'none') {
     calcElement.style.display = 'block';
-    /* */
     calcElement.style.left = '';
     calcElement.style.top = '40px'; 
-
     makeElementDraggable('#calc-app');
   } else {
     calcElement.style.display = 'none';
