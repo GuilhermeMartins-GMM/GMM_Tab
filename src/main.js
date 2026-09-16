@@ -1,6 +1,9 @@
 import './style.css';
 
-const API_KEY = import.meta.env.VITE_NASA_API_KEY;
+const API_KEY = (typeof import.meta !== 'undefined' && import.meta.env) 
+  ? import.meta.env.VITE_NASA_API_KEY 
+  : 'DEMO_KEY';
+
 const url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
 
 const appElement = document.querySelector('#app');

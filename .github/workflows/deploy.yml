@@ -30,7 +30,6 @@ jobs:
         run: npm ci
 
       - name: Construir o Site (Build)
-        # É aqui que o robô puxa a chave que você vai esconder no GitHub
         env:
           VITE_NASA_API_KEY: ${{ secrets.VITE_NASA_API_KEY }}
         run: npm run build
