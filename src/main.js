@@ -21,9 +21,7 @@ const equalButton = document.querySelector('#btn-equal');
 let currentExpression = '';
 
 btnNasa.addEventListener('click', () => {
-  const currentDisplay = window.getComputedStyle(appElement).display;
-
-  if (currentDisplay === 'none') {
+  if (appElement.style.display === 'none') {
     appElement.style.display = 'block'; 
   } else {
     appElement.style.display = 'none';
