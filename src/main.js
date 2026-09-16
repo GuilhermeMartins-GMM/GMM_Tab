@@ -26,35 +26,56 @@ window.makeElementDraggable = function(selector) {
     if (!card) return;
     let isDragging = false, offsetX, offsetY;
 
-    card.addEventListener('mousedown', (e) => {
-      if (e.target.closest('.calc-buttons') || e.target.closest('#explanationText') || e.target.closest('input')) return;
+    function startDrag(clientX, clientY, target) {
+      if (target.closest('.calc-buttons') || target.closest('#explanationText') || target.closest('input')) return;
       isDragging = true;
       card.style.cursor = 'grabbing';
-      offsetX = e.clientX - card.offsetLeft;
-      offsetY = e.clientY - card.offsetTop;
-    });
+      offsetX = clientX - card.offsetLeft;
+      offsetY = clientY - card.offsetTop;
+    }
 
-    document.addEventListener('mousemove', (e) => {
+    function doDrag(clientX, clientY) {
       if (!isDragging) return;
       card.style.right = 'auto'; 
-      card.style.left = `${e.clientX - offsetX}px`;
-      card.style.top = `${e.clientY - offsetY}px`;
-    });
+      card.style.left = `${clientX - offsetX}px`;
+      card.style.top = `${clientY - offsetY}px`;
+    }
 
-    document.addEventListener('mouseup', () => {
+    function stopDrag() {
       isDragging = false;
       card.style.cursor = 'default';
-    });
+    }
+
+    card.addEventListener('mousedown', (e) => startDrag(e.clientX, e.clientY, e.target));
+    document.addEventListener('mousemove', (e) => doDrag(e.clientX, e.clientY));
+    document.addEventListener('mouseup', stopDrag);
+
+    card.addEventListener('touchstart', (e) => {
+      const touch = e.touches[0];
+      startDrag(touch.clientX, touch.clientY, e.target);
+    }, { passive: true });
+
+    document.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      if (e.cancelable) e.preventDefault(); 
+      const touch = e.touches[0];
+      doDrag(touch.clientX, touch.clientY);
+    }, { passive: false });
+
+    document.addEventListener('touchend', stopDrag);
   }, 100);
 }
 
+
 btnNasa.addEventListener('click', () => {
   appElement.classList.toggle('janela-oculta');
+  if (!appElement.classList.contains('janela-oculta')) {
+    makeElementDraggable('#app');
+  }
 });
 
 btnCalc.addEventListener('click', () => {
   calcElement.classList.toggle('janela-oculta');
-  
   if (!calcElement.classList.contains('janela-oculta')) {
     calcElement.style.left = '';
     calcElement.style.top = '40px'; 
@@ -120,7 +141,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 function fetchNasaData() {
-  appElement.innerHTML = '<p>loading...</p>';
+  appElement.innerHTML = '<p style="color:white; padding:20px;">loading...</p>';
 
   fetch(url)
     .then(response => {
@@ -162,7 +183,8 @@ function fetchNasaData() {
           button.innerText = 'See More';
         }
       });
-      makeElementDraggable('.nasa-card');
+      
+      makeElementDraggable('#app');
     })
     .catch(error => {
       console.error(error);
@@ -176,4 +198,3 @@ function fetchNasaData() {
 }
 
 fetchNasaData();
-
