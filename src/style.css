@@ -119,6 +119,7 @@ body {
 .nasa-card {
   background: linear-gradient(135deg, #0f172a, #1e1b4b);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  pointer-events: auto; 
   border-radius: 16px;
   padding: 15px;
   width: 320px;
@@ -172,6 +173,7 @@ body {
 
 .calc-card {
   position: absolute;
+  pointer-events: auto; 
   top: 40px;
   left: calc(100vw - 330px);
   z-index: 9998;
@@ -258,4 +260,9 @@ body {
 .search-input::placeholder {
   color: rgb(255, 255, 255); 
   opacity: 0.6; 
+}
+
+.janela-oculta {
+  display: none !important;
+  pointer-events: none !important; 
 }

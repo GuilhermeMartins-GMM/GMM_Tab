@@ -49,21 +49,16 @@ window.makeElementDraggable = function(selector) {
 }
 
 btnNasa.addEventListener('click', () => {
-  if (appElement.style.display === 'none') {
-    appElement.style.display = 'block'; 
-  } else {
-    appElement.style.display = 'none';
-  }
+  appElement.classList.toggle('janela-oculta');
 });
 
 btnCalc.addEventListener('click', () => {
-  if (calcElement.style.display === 'none') {
-    calcElement.style.display = 'block';
+  calcElement.classList.toggle('janela-oculta');
+  
+  if (!calcElement.classList.contains('janela-oculta')) {
     calcElement.style.left = '';
     calcElement.style.top = '40px'; 
     makeElementDraggable('#calc-app');
-  } else {
-    calcElement.style.display = 'none';
   }
 });
 
@@ -107,7 +102,7 @@ equalButton.addEventListener('click', () => {
 });
 
 document.addEventListener('keydown', (e) => {
-  if (calcElement.style.display === 'none') return;
+  if (calcElement.classList.contains('janela-oculta')) return;
 
   const validKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '/', '%', '(', ')', '.'];
 
