@@ -4,12 +4,12 @@ body {
   width: 100vw;
   height: 100vh;
   background: linear-gradient(
-        45deg,
-        rgb(7, 141, 112) 0%,
-        rgb(255, 255, 255) 35%,
-        rgb(255, 255, 255) 65%,
-        rgb(61, 26, 121) 100%
-    );
+    45deg,
+    rgb(7, 141, 112) 0%,
+    rgb(255, 255, 255) 35%,
+    rgb(255, 255, 255) 65%,
+    rgb(61, 26, 121) 100%
+  );
   font-family: sans-serif;
   display: flex;
   justify-content: center;
@@ -78,10 +78,10 @@ body {
 .tool-card {
   flex: 1;
   background: linear-gradient(
-        45deg,
-        rgb(61, 26, 121),
-        rgb(7, 141, 112)
-    );
+    45deg,
+    rgb(61, 26, 121),
+    rgb(7, 141, 112)
+  );
   border: 1px solid rgba(61, 26, 121, 0.9);
   color: white;
   padding: 15px 10px;
@@ -95,10 +95,10 @@ body {
 .tool-card:hover {
   transform: translateY(-5px);
   background: linear-gradient(
-        45deg,
-        rgb(130, 103, 176),
-        rgb(81, 149, 134)
-    );
+    45deg,
+    rgb(130, 103, 176),
+    rgb(81, 149, 134)
+  );
 }
 
 .format-link {
@@ -109,11 +109,14 @@ body {
   box-sizing: border-box;
 }
 
-.nasa-card {
+#app {
   position: absolute;
   top: 40px;
   left: 40px;
   z-index: 9999;
+}
+
+.nasa-card {
   background: linear-gradient(135deg, #0f172a, #1e1b4b);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
@@ -157,16 +160,20 @@ body {
   width: 100%; 
   padding: 10px 0; 
   margin-top: 25px; 
-  border-radius: 20px; border: none;
-  background-color: #6a0da3; color: rgb(255, 255, 255); 
-  font-weight: bold; cursor: pointer; 
-  display: block; text-align: center;
+  border-radius: 20px; 
+  border: none;
+  background-color: #6a0da3; 
+  color: rgb(255, 255, 255); 
+  font-weight: bold; 
+  cursor: pointer; 
+  display: block; 
+  text-align: center;
 }
 
 .calc-card {
   position: absolute;
   top: 40px;
-  right: 40px;
+  left: calc(100vw - 330px);
   z-index: 9998;
   background-color: #120723;
   border: 1px solid rgba(255, 255, 255, 0.05);
