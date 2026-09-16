@@ -18,6 +18,10 @@ const equalButton = document.querySelector('#btn-equal');
 let currentExpression = '';
 
 btnNasa.addEventListener('click', () => {
+
+  /* */
+  const currentDisplay = window.getComputedStyle(appElement).display;
+
   if (appElement.style.display === 'none') {
     appElement.style.display = 'block'; 
   } else {
@@ -28,6 +32,10 @@ btnNasa.addEventListener('click', () => {
 btnCalc.addEventListener('click', () => {
   if (calcElement.style.display === 'none') {
     calcElement.style.display = 'block';
+    /* */
+    calcElement.style.left = '';
+    calcElement.style.top = '40px'; 
+
     makeElementDraggable('#calc-app');
   } else {
     calcElement.style.display = 'none';
@@ -161,12 +169,16 @@ function makeElementDraggable(selector) {
 
       isDragging = true;
       card.style.cursor = 'grabbing';
-      offsetX = e.clientX - card.getBoundingClientRect().left;
-      offsetY = e.clientY - card.getBoundingClientRect().top;
+      
+      offsetX = e.clientX - card.offsetLeft;
+      offsetY = e.clientY - card.offsetTop;
     });
 
     document.addEventListener('mousemove', (e) => {
       if (!isDragging) return;
+      
+      card.style.right = 'auto'; 
+      
       card.style.left = `${e.clientX - offsetX}px`;
       card.style.top = `${e.clientY - offsetY}px`;
     });
