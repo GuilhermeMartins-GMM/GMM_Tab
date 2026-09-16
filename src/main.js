@@ -19,8 +19,7 @@ let currentExpression = '';
 
 btnNasa.addEventListener('click', () => {
   if (appElement.style.display === 'none') {
-    appElement.style.display = 'block';
-    makeElementDraggable('.nasa-card'); 
+    appElement.style.display = 'block'; 
   } else {
     appElement.style.display = 'none';
   }
@@ -93,7 +92,6 @@ document.addEventListener('keydown', (e) => {
 });
 
 function fetchNasaData() {
-  // REQUISITO EXIGIDO: Mostra o estado de carregamento antes de chamar a API
   appElement.innerHTML = '<p>loading...</p>';
 
   fetch(url)
@@ -102,20 +100,16 @@ function fetchNasaData() {
       return response.json();
     })
     .then(data => {
-      // DESAFIO EXTRA: Trata os 3 casos de mídia (Imagem, Vídeo do YouTube e Vídeo Direto)
       let mediaHtml = '';
 
       if (data.media_type === 'image') {
         mediaHtml = `<img src="${data.url}" alt="${data.title}" class="nasa-media" />`;
       } else if (data.url.includes('youtube')) {
-        // Se for um link do YouTube, usa obrigatoriamente <iframe> como pede o desafio
         mediaHtml = `<iframe src="${data.url}" frameborder="0" allowfullscreen class="nasa-media"></iframe>`;
       } else {
-        // Se for um arquivo de vídeo comum (.mp4, etc), usa a tag <video> padrão do tutorial
         mediaHtml = `<video src="${data.url}" controls class="nasa-media"></video>`;
       }
 
-      // Monta o layout final mantendo suas funcionalidades extras bem integradas
       appElement.innerHTML = `
         <div class="nasa-card">
           <h1 class="nasa-title">${data.title}</h1>
@@ -128,7 +122,6 @@ function fetchNasaData() {
         </div>
       `;
 
-      // Gerencia o clique do seu botão personalizado "See More"
       const button = document.querySelector('#explanationText');
       const explanation = document.querySelector('.nasa-explanation');
 
@@ -141,10 +134,10 @@ function fetchNasaData() {
           button.innerText = 'See More';
         }
       });
+      makeElementDraggable('.nasa-card');
     })
     .catch(error => {
       console.error(error);
-      // REQUISITO EXIGIDO: Trata o erro renderizando uma mensagem amigável na tela
       appElement.innerHTML = `
         <div class="nasa-card">
           <h1 class="nasa-title">Error Loading Data</h1>
@@ -154,7 +147,6 @@ function fetchNasaData() {
     });
 }
 
-// Inicializa a execução da API da NASA
 fetchNasaData();
 
 
