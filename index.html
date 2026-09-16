@@ -6,6 +6,31 @@
     <title>My Website</title>
     <link rel="stylesheet" href="./src/style.css" />
 
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Guilherme Martins de Magalhães",
+            "alternativeName": "GMM",
+            "description": "Gold medalist in informatics (OBI), and multiple medalist in physics, chemistry, and mathematics.",
+            "image": "https://guilhermemm.com",
+            "jobTitle": [
+                "Competitive Programmer",
+                "Chemistry Student"
+            ],
+            "award": [
+                "Gold Medalist in Informatics (OBI 2025)",
+                "Silver Medalist in Physics (OBF)",
+                "Silver Medalist in Chemistry (OBQJr)",
+                "Silver Medalist in Mathematics (OBMEP)"
+            ],
+            "sameAs":[
+                "https://olimpiada.ic.unicamp.br/passadas/OBI2025/qmerito/i2/",
+                "https://instagram.com/_gui_mm_/"
+            ]
+        }
+    </script>
+
     <style>
       #loading-screen {
         position: fixed;
@@ -82,7 +107,7 @@
       window.addEventListener('load', () => {
         const loader = document.getElementById('loading-screen');
         loader.style.opacity = '0';
-        setTimeout(() => loader.remove(), 300);
+        setTimeout(() => loader.remove(), 1400);
       });
     </script>
 
