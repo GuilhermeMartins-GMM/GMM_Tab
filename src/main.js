@@ -92,57 +92,71 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-async function fetchNasaData() {
-  try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error('Error in the API data');
-    const data = await response.json();
+function fetchNasaData() {
+  // REQUISITO EXIGIDO: Mostra o estado de carregamento antes de chamar a API
+  appElement.innerHTML = '<p>loading...</p>';
 
-    appElement.innerHTML = `
-      <div class="nasa-card">
-        <h1 class="nasa-title">${data.title}</h1>
-        <p class="nasa-date">${data.date}</p>
-        <div class="media-container">
-          ${data.media_type === 'image' 
-            ? `<img src="${data.url}" alt="${data.title}" class="nasa-media" />`
-            : `<iframe src="${data.url}" frameborder="0" allowfullscreen class="nasa-media"></iframe>`
-          }
-        </div>
-        <button id="explanationText">See More</button>
-        <p class="nasa-explanation" style="display: none;">${data.explanation}</p>
-      </div>
-    `;
+  fetch(url)
+    .then(response => {
+      if (!response.ok) throw new Error('Error in the API data');
+      return response.json();
+    })
+    .then(data => {
+      // DESAFIO EXTRA: Trata os 3 casos de mídia (Imagem, Vídeo do YouTube e Vídeo Direto)
+      let mediaHtml = '';
 
-    const button = document.querySelector('#explanationText');
-    const explanation = document.querySelector('.nasa-explanation');
-
-    button.addEventListener('click', () => {
-      if (explanation.style.display === 'none') {
-        explanation.style.display = 'block';
-        button.innerText = 'Hide';
+      if (data.media_type === 'image') {
+        mediaHtml = `<img src="${data.url}" alt="${data.title}" class="nasa-media" />`;
+      } else if (data.url.includes('youtube')) {
+        // Se for um link do YouTube, usa obrigatoriamente <iframe> como pede o desafio
+        mediaHtml = `<iframe src="${data.url}" frameborder="0" allowfullscreen class="nasa-media"></iframe>`;
       } else {
-        explanation.style.display = 'none';
-        button.innerText = 'See More';
+        // Se for um arquivo de vídeo comum (.mp4, etc), usa a tag <video> padrão do tutorial
+        mediaHtml = `<video src="${data.url}" controls class="nasa-media"></video>`;
       }
-    });
 
-  } catch (error) {
-    console.error(error);
-    appElement.innerHTML = `
-      <div class="nasa-card">
-        <h1 class="nasa-title">Error Loading Data</h1>
-        <p class="nasa-date">Please check connection</p>
-        <div class="media-container" style="background: rgba(255, 255, 255, 0.05); border: 2px dashed rgba(255, 255, 255, 0.2); border-radius: 10px; height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 10px; box-sizing: border-box;">
-          <p style="color: #ff4a4a; font-weight: bold; margin: 0 0 5px 0;">NASA data failed.</p>
-          <small style="color: #cbd5e1;">Verify your API Key.</small>
+      // Monta o layout final mantendo suas funcionalidades extras bem integradas
+      appElement.innerHTML = `
+        <div class="nasa-card">
+          <h1 class="nasa-title">${data.title}</h1>
+          <p class="nasa-date">${data.date || ''}</p>
+          <div class="media-container">
+            ${mediaHtml}
+          </div>
+          <button id="explanationText">See More</button>
+          <p class="nasa-explanation" style="display: none;">${data.explanation}</p>
         </div>
-        <button id="explanationText" style="opacity: 0.5; cursor: not-allowed;" disabled>See More</button>
-      </div>
-    `;
-  }
+      `;
+
+      // Gerencia o clique do seu botão personalizado "See More"
+      const button = document.querySelector('#explanationText');
+      const explanation = document.querySelector('.nasa-explanation');
+
+      button.addEventListener('click', () => {
+        if (explanation.style.display === 'none') {
+          explanation.style.display = 'block';
+          button.innerText = 'Hide';
+        } else {
+          explanation.style.display = 'none';
+          button.innerText = 'See More';
+        }
+      });
+    })
+    .catch(error => {
+      console.error(error);
+      // REQUISITO EXIGIDO: Trata o erro renderizando uma mensagem amigável na tela
+      appElement.innerHTML = `
+        <div class="nasa-card">
+          <h1 class="nasa-title">Error Loading Data</h1>
+          <p style="color: #ff4a4a;">Verify your connection or API Key.</p>
+        </div>
+      `;
+    });
 }
 
+// Inicializa a execução da API da NASA
 fetchNasaData();
+
 
 function makeElementDraggable(selector) {
   setTimeout(() => {
