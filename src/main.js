@@ -20,7 +20,7 @@ const equalButton = document.querySelector('#btn-equal');
 
 let currentExpression = '';
 
-function makeElementDraggable(selector) {
+window.makeElementDraggable = function(selector) {
   setTimeout(() => {
     const card = document.querySelector(selector);
     if (!card) return;
