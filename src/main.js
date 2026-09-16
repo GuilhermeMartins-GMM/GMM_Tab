@@ -89,6 +89,7 @@ function updateScreen(value) {
 
 numButtons.forEach(button => {
   button.addEventListener('click', () => {
+    if (button.innerText === 'G') return;
     currentExpression += button.innerText;
     updateScreen(currentExpression);
   });
@@ -125,7 +126,7 @@ equalButton.addEventListener('click', () => {
 document.addEventListener('keydown', (e) => {
   if (calcElement.classList.contains('janela-oculta')) return;
 
-  const validKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '/', '%', '(', ')', '.'];
+  const validKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '/', '%', '.'];
 
   if (validKeys.includes(e.key)) {
     currentExpression += e.key;
