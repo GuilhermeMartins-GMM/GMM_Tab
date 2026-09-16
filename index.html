@@ -1,13 +1,90 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>gmm-tab</title>
+    <title>My Website</title>
+
+    <style>
+      #loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(
+        45deg,
+        rgb(7, 141, 112) 0%,
+        rgb(255, 255, 255) 35%,
+        rgb(255, 255, 255) 65%,
+        rgb(61, 26, 121) 100%
+        );
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 99999;
+        color: rgb(61, 26, 121);
+        font-family: sans-serif;
+        font-size: 1.5rem;
+        font-weight: bold;
+        transition: opacity 0.3s ease;
+      }
+    </style>
   </head>
   <body>
-    <div id="app"></div>
+
+    <div id="loading-screen">Wait...</div>
+
+    <div class="portal-container">
+      <h2>Type your email... jk, search here.</h2>
+      
+      <form action="https://google.com" method="GET" target="_blank" class="search-form">
+        <input type="text" name="q" placeholder="Type Your Search" required class="search-input" />
+        <button type="submit" class="search-btn">Search</button>
+      </form>
+
+      <div class="tools-grid">
+        <button id="btn-nasa" class="tool-card">NASA</button>
+        <a href="https://guilhermemm.com" target="_blank" class="tool-card format-link">CLICK!! (pls🙃)</a>
+        <button id="btn-calc" class="tool-card">Calculator</button>
+      </div>
+    </div>
+
+    <div id="app" style="display: none;"></div>
+    <div id="calc-app" class="calc-card" style="display: none;">
+      <input type="text" id="calc-screen" readonly value="0" />
+      <div class="calc-buttons">
+        <button class="btn-clear">C</button>
+        <button class="btn-back">⌫</button>
+        <button class="btn-op">%</button>
+        <button class="btn-op">/</button>
+        <button class="btn-num">7</button>
+        <button class="btn-num">8</button>
+        <button class="btn-num">9</button>
+        <button class="btn-op">*</button>
+        <button class="btn-num">4</button>
+        <button class="btn-num">5</button>
+        <button class="btn-num">6</button>
+        <button class="btn-op">-</button>
+        <button class="btn-num">1</button>
+        <button class="btn-num">2</button>
+        <button class="btn-num">3</button>
+        <button class="btn-op">+</button>
+        <button class="btn-num">(</button>
+        <button class="btn-num">0</button>
+        <button class="btn-num">.</button>
+        <button id="btn-equal">=</button>
+      </div>
+    </div>
+
+    <script type="module">
+      window.addEventListener('load', () => {
+        const loader = document.getElementById('loading-screen');
+        loader.style.opacity = '0';
+        setTimeout(() => loader.remove(), 300);
+      });
+    </script>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

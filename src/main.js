@@ -1,60 +1,173 @@
-import './style.css'
-import heroImg from './assets/hero.png'
-import javascriptLogo from './assets/javascript.svg'
-import viteLogo from './assets/vite.svg'
-import { setupCounter } from './counter.js'
+import './style.css';
 
-document.querySelector('#app').innerHTML = `
-<section id="center">
-  <div class="hero">
-    <img src="${heroImg}" class="base" width="170" height="179">
-    <img src="${javascriptLogo}" class="framework" alt="JavaScript logo"/>
-    <img src="${viteLogo}" class="vite" alt="Vite logo" />
-  </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/main.js</code> and save to test <code>HMR</code></p>
-  </div>
-  <button id="counter" type="button" class="counter"></button>
-</section>
+const API_KEY = import.meta.env.VITE_NASA_API_KEY;
+const url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
 
-<div class="ticks"></div>
+const appElement = document.querySelector('#app');
+const btnNasa = document.querySelector('#btn-nasa');
+const calcElement = document.querySelector('#calc-app');
+const btnCalc = document.querySelector('#btn-calc');
 
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#documentation-icon"></use></svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank">
-          <img class="logo" src="${viteLogo}" alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-          <img class="button-icon" src="${javascriptLogo}" alt="">
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#social-icon"></use></svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li><a href="https://github.com/vitejs/vite" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#github-icon"></use></svg>GitHub</a></li>
-      <li><a href="https://chat.vite.dev/" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#discord-icon"></use></svg>Discord</a></li>
-      <li><a href="https://x.com/vite_js" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#x-icon"></use></svg>X.com</a></li>
-      <li><a href="https://bsky.app/profile/vite.dev" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#bluesky-icon"></use></svg>Bluesky</a></li>
-    </ul>
-  </div>
-</section>
+const calcScreen = document.querySelector('#calc-screen');
+const numButtons = document.querySelectorAll('.btn-num');
+const opButtons = document.querySelectorAll('.btn-op');
+const clearButton = document.querySelector('.btn-clear');
+const backButton = document.querySelector('.btn-back');
+const equalButton = document.querySelector('#btn-equal');
 
-<div class="ticks"></div>
-<section id="spacer"></section>
-`
+let currentExpression = '';
 
-setupCounter(document.querySelector('#counter'))
+btnNasa.addEventListener('click', () => {
+  if (appElement.style.display === 'none') {
+    appElement.style.display = 'block';
+    makeElementDraggable('.nasa-card'); 
+  } else {
+    appElement.style.display = 'none';
+  }
+});
+
+btnCalc.addEventListener('click', () => {
+  if (calcElement.style.display === 'none') {
+    calcElement.style.display = 'block';
+    makeElementDraggable('#calc-app');
+  } else {
+    calcElement.style.display = 'none';
+  }
+});
+
+function updateScreen(value) {
+  calcScreen.value = value || '0';
+}
+
+numButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    currentExpression += button.innerText;
+    updateScreen(currentExpression);
+  });
+});
+
+opButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    currentExpression += button.innerText;
+    updateScreen(currentExpression);
+  });
+});
+
+clearButton.addEventListener('click', () => {
+  currentExpression = '';
+  updateScreen('0');
+});
+
+backButton.addEventListener('click', () => {
+  currentExpression = currentExpression.slice(0, -1);
+  updateScreen(currentExpression);
+});
+
+equalButton.addEventListener('click', () => {
+  try {
+    let result = eval(currentExpression);
+    currentExpression = String(result); 
+    updateScreen(currentExpression);
+  } catch (error) {
+    updateScreen('Error');
+    currentExpression = '';
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (calcElement.style.display === 'none') return;
+
+  const validKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '/', '%', '(', ')', '.'];
+
+  if (validKeys.includes(e.key)) {
+    currentExpression += e.key;
+    updateScreen(currentExpression);
+  } else if (e.key === 'Enter') {
+    e.preventDefault();
+    equalButton.click();
+  } else if (e.key === 'Backspace') {
+    backButton.click();
+  } else if (e.key === 'Escape') {
+    clearButton.click();
+  }
+});
+
+async function fetchNasaData() {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('Error in the API data');
+    const data = await response.json();
+
+    appElement.innerHTML = `
+      <div class="nasa-card">
+        <h1 class="nasa-title">${data.title}</h1>
+        <p class="nasa-date">${data.date}</p>
+        <div class="media-container">
+          ${data.media_type === 'image' 
+            ? `<img src="${data.url}" alt="${data.title}" class="nasa-media" />`
+            : `<iframe src="${data.url}" frameborder="0" allowfullscreen class="nasa-media"></iframe>`
+          }
+        </div>
+        <button id="explanationText">See More</button>
+        <p class="nasa-explanation" style="display: none;">${data.explanation}</p>
+      </div>
+    `;
+
+    const button = document.querySelector('#explanationText');
+    const explanation = document.querySelector('.nasa-explanation');
+
+    button.addEventListener('click', () => {
+      if (explanation.style.display === 'none') {
+        explanation.style.display = 'block';
+        button.innerText = 'Hide';
+      } else {
+        explanation.style.display = 'none';
+        button.innerText = 'See More';
+      }
+    });
+
+  } catch (error) {
+    console.error(error);
+    appElement.innerHTML = `
+      <div class="nasa-card">
+        <h1 class="nasa-title">Error Loading Data</h1>
+        <p class="nasa-date">Please check connection</p>
+        <div class="media-container" style="background: rgba(255, 255, 255, 0.05); border: 2px dashed rgba(255, 255, 255, 0.2); border-radius: 10px; height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 10px; box-sizing: border-box;">
+          <p style="color: #ff4a4a; font-weight: bold; margin: 0 0 5px 0;">NASA data failed.</p>
+          <small style="color: #cbd5e1;">Verify your API Key.</small>
+        </div>
+        <button id="explanationText" style="opacity: 0.5; cursor: not-allowed;" disabled>See More</button>
+      </div>
+    `;
+  }
+}
+
+fetchNasaData();
+
+function makeElementDraggable(selector) {
+  setTimeout(() => {
+    const card = document.querySelector(selector);
+    if (!card) return;
+    let isDragging = false, offsetX, offsetY;
+
+    card.addEventListener('mousedown', (e) => {
+      if (e.target.closest('.calc-buttons') || e.target.closest('#explanationText')) return;
+
+      isDragging = true;
+      card.style.cursor = 'grabbing';
+      offsetX = e.clientX - card.getBoundingClientRect().left;
+      offsetY = e.clientY - card.getBoundingClientRect().top;
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      card.style.left = `${e.clientX - offsetX}px`;
+      card.style.top = `${e.clientY - offsetY}px`;
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      card.style.cursor = 'default';
+    });
+  }, 100);
+}
