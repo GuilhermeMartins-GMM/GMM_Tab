@@ -89,7 +89,7 @@ function updateScreen(value) {
 
 numButtons.forEach(button => {
   button.addEventListener('click', () => {
-    if (button.innerText === 'G') return;
+    if (button.innerText === 'GMM') return;
     currentExpression += button.innerText;
     updateScreen(currentExpression);
   });
