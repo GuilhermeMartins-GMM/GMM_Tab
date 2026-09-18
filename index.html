@@ -31,35 +31,8 @@
         }
     </script>
 
-    <style>
-      #loading-screen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: linear-gradient(
-        45deg,
-        rgb(7, 141, 112) 0%,
-        rgb(255, 255, 255) 35%,
-        rgb(255, 255, 255) 65%,
-        rgb(61, 26, 121) 100%
-        );
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 99999;
-        color: rgb(61, 26, 121);
-        font-family: sans-serif;
-        font-size: 1.5rem;
-        font-weight: bold;
-        transition: opacity 0.4s ease;
-      }
-    </style>
   </head>
   <body>
-
-    <div id="loading-screen">Wait...</div>
 
     <div class="portal-container">
       <h2>Type Your Email</h2>
@@ -102,14 +75,6 @@
         <button id="btn-equal">=</button>
       </div>
     </div>
-
-    <script type="module">
-      window.addEventListener('load', () => {
-        const loader = document.getElementById('loading-screen');
-        loader.style.opacity = '0';
-        setTimeout(() => loader.remove(), 3500);
-      });
-    </script>
 
     <script type="module" src="/src/main.js"></script>
   </body>
