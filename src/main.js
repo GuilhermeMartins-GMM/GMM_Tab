@@ -18,6 +18,20 @@ const clearButton = document.querySelector('.btn-clear');
 const backButton = document.querySelector('.btn-back');
 const equalButton = document.querySelector('#btn-equal');
 
+const snakeElement = document.querySelector('#snake-app');
+const btnSnake = document.querySelector('#btn-snake');
+const canvas = document.querySelector('#snake-canvas');
+const ctx = canvas ? canvas.getContext('2d') : null;
+const scoreElement = document.querySelector('#snake-score');
+
+const gridSize = 14;
+let tileCount = canvas ? canvas.width / gridSize : 20;
+let snake = [{ x: 10, y: 10 }];
+let velocity = { x: 1, y: 0 };
+let food = { x: 5, y: 5 };
+let score = 0;
+let gameInterval = null;
+
 let currentExpression = '' ;
 
 window.makeElementDraggable = function(selector) {
@@ -27,7 +41,7 @@ window.makeElementDraggable = function(selector) {
     let isDragging = false, offsetX, offsetY;
 
     function startDrag(clientX, clientY, target) {
-      if (target.closest('.calc-buttons') || target.closest('#explanationText') || target.closest('input')) return;
+      if (target.closest('.calc-buttons') || target.closest('#explanationText') || target.closest('input') || target.tagName.toLowerCase() === 'canvas') return;
       isDragging = true;
       card.style.cursor = 'grabbing';
       offsetX = clientX - card.offsetLeft;
@@ -80,6 +94,95 @@ btnCalc.addEventListener('click', () => {
     calcElement.style.left = '';
     calcElement.style.top = '40px'; 
     makeElementDraggable('#calc-app');
+  }
+});
+
+btnSnake.addEventListener('click', () => {
+  snakeElement.classList.toggle('janela-oculta');
+  if (!snakeElement.classList.contains('janela-oculta')) {
+    resetGame();
+    if (gameInterval) clearInterval(gameInterval);
+    gameInterval = setInterval(gameLoop, 100);
+    makeElementDraggable('#snake-app');
+  } else {
+    clearInterval(gameInterval);
+  }
+});
+
+function resetGame() {
+  snake = [{ x: 10, y: 10 }];
+  velocity = { x: 1, y: 0 };
+  score = 0;
+  if (scoreElement) scoreElement.innerText = score;
+  spawnFood();
+}
+
+function spawnFood() {
+  food.x = Math.floor(Math.random() * tileCount);
+  food.y = Math.floor(Math.random() * tileCount);
+}
+
+function gameLoop() {
+  if (!ctx) return;
+
+  const head = { x: snake[0].x + velocity.x, y: snake[0].y + velocity.y };
+
+  if (
+    head.x < 0 || head.x >= tileCount ||
+    head.y < 0 || head.y >= tileCount ||
+    snake.some(segment => segment.x === head.x && segment.y === head.y)
+  ) {
+    alert(`Game Over! Pontuação: ${score}`);
+    resetGame();
+    return;
+  }
+
+  snake.unshift(head);
+
+  if (head.x === food.x && head.y === food.y) {
+    score += 10;
+    if (scoreElement) scoreElement.innerText = score;
+    spawnFood();
+  } else {
+    snake.pop();
+  }
+
+  draw();
+}
+
+function draw() {
+  ctx.fillStyle = 'rgb(18, 7, 35)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = 'rgb(239, 68, 68)';
+  ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize - 1, gridSize - 1);
+
+  snake.forEach((segment, index) => {
+    if (index === 0) {
+      ctx.fillStyle = 'rgb(7, 141, 112)';
+    } else {
+      ctx.fillStyle = 'rgb(139, 99, 241)';
+    }
+    ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize - 1, gridSize - 1);
+  });
+}
+
+document.addEventListener('keydown', (e) => {
+  if (snakeElement.classList.contains('janela-oculta')) return;
+
+  switch (e.key) {
+    case 'ArrowUp':
+      if (velocity.y !== 1) velocity = { x: 0, y: -1 };
+      break;
+    case 'ArrowDown':
+      if (velocity.y !== -1) velocity = { x: 0, y: 1 };
+      break;
+    case 'ArrowLeft':
+      if (velocity.x !== 1) velocity = { x: -1, y: 0 };
+      break;
+    case 'ArrowRight':
+      if (velocity.x !== -1) velocity = { x: 1, y: 0 };
+      break;
   }
 });
 

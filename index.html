@@ -44,12 +44,19 @@
 
       <div class="tools-grid">
         <button id="btn-nasa" class="tool-card">NASA</button>
-        <a href="https://guilhermemm.com" target="_blank" class="tool-card format-link">CLICK!!</a>
+        <button id="btn-snake" class="tool-card format-link">Snake</button>
         <button id="btn-calc" class="tool-card">Calculator</button>
       </div>
     </div>
 
     <div id="app" class="janela-oculta"></div>
+    <div id="snake-app" class="snake-card janela-oculta">
+    <div class="snake-header">
+    <span>Score: <b id="snake-score">0</b></span>
+    </div>
+    <canvas id="snake-canvas" width="280" height="280"></canvas>
+    <p class="snake-info">Use arrow keys to play</p>
+    </div>
     <div id="calc-app" class="calc-card janela-oculta">
     <input type="text" id="calc-screen" readonly value="0" />
       <div class="calc-buttons">
