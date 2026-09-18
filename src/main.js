@@ -18,7 +18,7 @@ const clearButton = document.querySelector('.btn-clear');
 const backButton = document.querySelector('.btn-back');
 const equalButton = document.querySelector('#btn-equal');
 
-let currentExpression = '';
+let currentExpression = '' ;
 
 window.makeElementDraggable = function(selector) {
   setTimeout(() => {
@@ -114,7 +114,8 @@ backButton.addEventListener('click', () => {
 
 equalButton.addEventListener('click', () => {
   try {
-    let result = eval(currentExpression);
+    let realExpression=currentExpression.replaceAll('%', '/100');
+    let result = eval(realExpression);
     currentExpression = String(result); 
     updateScreen(currentExpression);
   } catch (error) {
