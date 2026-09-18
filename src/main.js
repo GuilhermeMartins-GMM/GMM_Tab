@@ -102,7 +102,7 @@ btnSnake.addEventListener('click', () => {
   if (!snakeElement.classList.contains('janela-oculta')) {
     resetGame();
     if (gameInterval) clearInterval(gameInterval);
-    gameInterval = setInterval(gameLoop, 100);
+    gameInterval = setInterval(gameLoop, 200);
     makeElementDraggable('#snake-app');
   } else {
     clearInterval(gameInterval);
@@ -154,15 +154,11 @@ function draw() {
   ctx.fillStyle = 'rgb(18, 7, 35)';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ctx.fillStyle = 'rgb(239, 68, 68)';
+  ctx.fillStyle = 'rgb(55, 191, 83)';
   ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize - 1, gridSize - 1);
 
   snake.forEach((segment, index) => {
-    if (index === 0) {
-      ctx.fillStyle = 'rgb(7, 141, 112)';
-    } else {
-      ctx.fillStyle = 'rgb(139, 99, 241)';
-    }
+    ctx.fillStyle = 'rgb(95, 48, 205)';
     ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize - 1, gridSize - 1);
   });
 }
