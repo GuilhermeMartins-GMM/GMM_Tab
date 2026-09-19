@@ -100,7 +100,7 @@ Snake.addEventListener('click', () => {
   if (!snakeElement.classList.contains('janela-oculta')) {
     resetGame();
     if (gameInterval) clearInterval(gameInterval);
-    gameInterval = setInterval(gameLoop, 200);
+    gameInterval = setInterval(gameLoop, 280);
     makeElementDraggable('#snake-app');
   } else {
     clearInterval(gameInterval);
@@ -129,7 +129,7 @@ function gameLoop() {
     head.y < 0 || head.y >= tileCount ||
     snake.some(segment => segment.x === head.x && segment.y === head.y)
   ) {
-    alert(`Game Over! Pontuação: ${score}`);
+    alert(`Game Over! You got: ${score} points`);
     resetGame();
     return;
   }

@@ -53,6 +53,11 @@ body {
   outline: none;
 }
 
+.inputPesquisa::placeholder {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+
 .inputPesquisa:focus {
   border-color: rgb(61, 26, 121);
 }
