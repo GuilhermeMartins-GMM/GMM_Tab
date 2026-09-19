@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Website</title>
+    <title>GMM's Tab</title>
     <link rel="stylesheet" href="./src/style.css" />
 
   </head>
+
   <body>
 
     <div id="spotlight" class="spotlight"></div>
@@ -14,49 +15,43 @@
     <div class="boxInicial">
       <h2>Type Your Email</h2>
       
-      <form action="https://google.com/search" target="_blank" method="GET" class="localPesquisa">
-        <input type="text" name="q" placeholder="Just kidding, type your search" required class="inputPesquisa">
-        <button type="submit" class="search-btn">Search</button>
-      </form>
+      <div class="localPesquisa">
+        <input type="text" id="inputPesquisa" placeholder="Just kidding, type your search" class="inputPesquisa">
+        <button class="search-btn" onclick="pesquisarGoogle()">Search</button>
+      </div>
 
       <div class="botoes">
-        <button id="nasa" class="tool-card">NASA</button>
-        <button id="Snake" class="tool-card format-link">Snake</button>
-        <button id="calc" class="tool-card">Calculator</button>
+        <button id="nasa" class="tool-card" onclick="abrirNasa()">NASA</button>
+        <button id="Snake" class="tool-card format-link">(⚠️Later⚠️)</button>
+        <button id="calc" class="tool-card" onclick="abrirCalc()">Calculator</button>
       </div>
     </div>
 
     <div id="app" class="janela-oculta"></div>
-    <div id="snake-app" class="snake-card janela-oculta">
-    <div class="snake-header">
-    <span>Score: <b id="snake-score">0</b></span>
-    </div>
-    <canvas id="snake-canvas" width="280" height="280"></canvas>
-    <p class="snake-info">Use arrow keys to play</p>
-    </div>
+    
     <div id="calc-app" class="calc-card janela-oculta">
-    <input type="text" id="calc-screen" readonly value="0" />
+      <input type="text" id="calc-screen" readonly value="0" />
       <div class="calc-buttons">
-        <button class="btn-clear">C</button>
-        <button class="btn-back">⌫</button>
-        <button class="btn-op">%</button>
-        <button class="btn-op">/</button>
-        <button class="btn-num">7</button>
-        <button class="btn-num">8</button>
-        <button class="btn-num">9</button>
-        <button class="btn-op">x</button>
-        <button class="btn-num">4</button>
-        <button class="btn-num">5</button>
-        <button class="btn-num">6</button>
-        <button class="btn-op">-</button>
-        <button class="btn-num">1</button>
-        <button class="btn-num">2</button>
-        <button class="btn-num">3</button>
-        <button class="btn-op">+</button>
+        <button class="btn-clear" onclick="clear()">C</button>
+        <button class="btn-back" onclick="apagarUltimo()">⌫</button>
+        <button class="btn-op" onclick="addValor('/100')">%</button>
+        <button class="btn-op" onclick="addValor('/')">/</button>
+        <button class="btn-num" onclick="addValor('7')">7</button>
+        <button class="btn-num" onclick="addValor('8')">8</button>
+        <button class="btn-num" onclick="addValor('9')">9</button>
+        <button class="btn-op" onclick="addValor('*')">x</button>
+        <button class="btn-num" onclick="addValor('4')">4</button>
+        <button class="btn-num" onclick="addValor('5')">5</button>
+        <button class="btn-num" onclick="addValor('6')">6</button>
+        <button class="btn-op" onclick="addValor('-')">-</button>
+        <button class="btn-num" onclick="addValor('1')">1</button>
+        <button class="btn-num" onclick="addValor('2')">2</button>
+        <button class="btn-num" onclick="addValor('3')">3</button>
+        <button class="btn-op" onclick="addValor('+')">+</button>
         <button class="btn-num">GMM</button>
-        <button class="btn-num">0</button>
-        <button class="btn-num">.</button>
-        <button id="btn-equal">=</button>
+        <button class="btn-num" onclick="addValor('0')">0</button>
+        <button class="btn-num" onclick="addValor('.')">.</button>
+        <button id="btn-equal" onclick="calcular()">=</button>
       </div>
     </div>
 
