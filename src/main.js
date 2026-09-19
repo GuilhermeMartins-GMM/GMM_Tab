@@ -26,6 +26,13 @@ window.abrirCalc = function() {
   calc.style.top = '40px';
 };
 
+window.darDinheiro = function() {
+  if (navigator.vibrate) {
+    navigator.vibrate([200, 100, 200, 100, 500]); 
+  }
+  alert('DUMB');
+};
+
 function makeDraggable(selector) {
   let card = document.querySelector(selector);
   
@@ -95,14 +102,13 @@ window.calcular = function() {
 
 document.addEventListener('keydown', (e) => {
   let calcElement = document.getElementById('calc-app');
-  
   if (calcElement.classList.contains('janela-oculta')) return;
 
   let validKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-','x', '*', '/', '%', '.'];
 
   if (validKeys.includes(e.key)) {
-    let multiplication=e.key.replace('x', '*');
-    let porcentage=multiplication.replace('%', '/100');
+    let multiplication = e.key.replace('x', '*');
+    let porcentage = multiplication.replace('%', '/100');
     window.addValor(porcentage);
   } else if (e.key === 'Enter') {
     e.preventDefault();
