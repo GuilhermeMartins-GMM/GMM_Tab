@@ -17,7 +17,7 @@ body {
   overflow: hidden;
 }
 
-.portal-container {
+.boxInicial {
   text-align: center;
   background: rgba(255, 255, 255, 0.2);
   padding: 40px;
@@ -28,21 +28,21 @@ body {
   width: 100%;
 }
 
-.portal-container h1 {
+.boxInicial h1 {
   color: white;
   margin-top: 0;
   font-size: 1.8rem;
   margin-bottom: 25px;
 }
 
-.search-form {
+.localPesquisa {
   display: flex;
   gap: 10px;
   margin-bottom: 35px;
   flex-wrap: wrap;
 }
 
-.search-input {
+.inputPesquisa {
   flex: 1;
   padding: 14px 20px;
   border-radius: 12px;
@@ -53,7 +53,7 @@ body {
   outline: none;
 }
 
-.search-input:focus {
+.inputPesquisa:focus {
   border-color: rgb(61, 26, 121);
 }
 
@@ -68,7 +68,7 @@ body {
   font-size: 1rem;
 }
 
-.tools-grid {
+.botoes {
   display: flex;
   justify-content: space-between;
   gap: 15px;

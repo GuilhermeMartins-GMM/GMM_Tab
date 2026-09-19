@@ -6,46 +6,21 @@
     <title>My Website</title>
     <link rel="stylesheet" href="./src/style.css" />
 
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Guilherme Martins de Magalhães",
-            "alternativeName": "GMM",
-            "description": "Gold medalist in informatics (OBI), and multiple medalist in physics, chemistry, and mathematics.",
-            "image": "https://guilhermemm.com",
-            "jobTitle": [
-                "Competitive Programmer",
-                "Chemistry Student"
-            ],
-            "award": [
-                "Gold Medalist in Informatics (OBI 2025)",
-                "Silver Medalist in Physics (OBF)",
-                "Silver Medalist in Chemistry (OBQJr)",
-                "Silver Medalist in Mathematics (OBMEP)"
-            ],
-            "sameAs":[
-                "https://olimpiada.ic.unicamp.br/passadas/OBI2025/qmerito/i2/",
-                "https://instagram.com/_gui_mm_/"
-            ]
-        }
-    </script>
-
   </head>
   <body>
 
-    <div class="portal-container">
+    <div class="boxInicial">
       <h2>Type Your Email</h2>
       
-      <form action="https://google.com" method="GET" target="_blank" class="search-form">
-        <input type="text" name="q" placeholder="Just kidding, type your search" required class="search-input" />
+      <form action="https://google.com/search" method="GET" class="localPesquisa">
+        <input type="text" name="q" placeholder="Just kidding, type your search" required class="inputPesquisa">
         <button type="submit" class="search-btn">Search</button>
       </form>
 
-      <div class="tools-grid">
-        <button id="btn-nasa" class="tool-card">NASA</button>
-        <button id="btn-snake" class="tool-card format-link">Snake</button>
-        <button id="btn-calc" class="tool-card">Calculator</button>
+      <div class="botoes">
+        <button id="nasa" class="tool-card">NASA</button>
+        <button id="Snake" class="tool-card format-link">Snake</button>
+        <button id="calc" class="tool-card">Calculator</button>
       </div>
     </div>
 
@@ -67,7 +42,7 @@
         <button class="btn-num">7</button>
         <button class="btn-num">8</button>
         <button class="btn-num">9</button>
-        <button class="btn-op">*</button>
+        <button class="btn-op">x</button>
         <button class="btn-num">4</button>
         <button class="btn-num">5</button>
         <button class="btn-num">6</button>

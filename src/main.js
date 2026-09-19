@@ -1,15 +1,14 @@
 import './style.css';
 
-const API_KEY = (typeof import.meta !== 'undefined' && import.meta.env) 
-  ? import.meta.env.VITE_NASA_API_KEY 
-  : 'DEMO_KEY';
+const API_KEY = import.meta.env?.VITE_NASA_API_KEY || 'DEMO_KEY';
+
 
 const url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
 
 const appElement = document.querySelector('#app');
-const btnNasa = document.querySelector('#btn-nasa');
+const nasa = document.querySelector('#nasa');
 const calcElement = document.querySelector('#calc-app');
-const btnCalc = document.querySelector('#btn-calc');
+const calc = document.querySelector('#calc');
 
 const calcScreen = document.querySelector('#calc-screen');
 const numButtons = document.querySelectorAll('.btn-num');
@@ -19,13 +18,13 @@ const backButton = document.querySelector('.btn-back');
 const equalButton = document.querySelector('#btn-equal');
 
 const snakeElement = document.querySelector('#snake-app');
-const btnSnake = document.querySelector('#btn-snake');
+const Snake = document.querySelector('#Snake');
 const canvas = document.querySelector('#snake-canvas');
-const ctx = canvas ? canvas.getContext('2d') : null;
+const ctx = canvas.getContext('2d');
 const scoreElement = document.querySelector('#snake-score');
 
 const gridSize = 14;
-let tileCount = canvas ? canvas.width / gridSize : 20;
+let tileCount = canvas.width / gridSize;
 let snake = [{ x: 10, y: 10 }];
 let velocity = { x: 1, y: 0 };
 let food = { x: 5, y: 5 };
@@ -35,60 +34,59 @@ let gameInterval = null;
 let currentExpression = '' ;
 
 window.makeElementDraggable = function(selector) {
-  setTimeout(() => {
-    const card = document.querySelector(selector);
-    if (!card) return;
+
+  const card = document.querySelector(selector);
+  if (!card) return;
     let isDragging = false, offsetX, offsetY;
 
-    function startDrag(clientX, clientY, target) {
-      if (target.closest('.calc-buttons') || target.closest('#explanationText') || target.closest('input') || target.tagName.toLowerCase() === 'canvas') return;
-      isDragging = true;
-      card.style.cursor = 'grabbing';
-      offsetX = clientX - card.offsetLeft;
-      offsetY = clientY - card.offsetTop;
-    }
+  function startDrag(clientX, clientY, target) {
+    if (target.closest('.calc-buttons') || target.closest('#explanationText') || target.closest('input') || target.tagName.toLowerCase() === 'canvas') return;
+    isDragging = true;
+    card.style.cursor = 'grabbing';
+    offsetX = clientX - card.offsetLeft;
+    offsetY = clientY - card.offsetTop;
+  }
 
-    function doDrag(clientX, clientY) {
-      if (!isDragging) return;
-      card.style.right = 'auto'; 
-      card.style.left = `${clientX - offsetX}px`;
-      card.style.top = `${clientY - offsetY}px`;
-    }
+  function doDrag(clientX, clientY) {
+    if (!isDragging) return;
+    card.style.right = 'auto'; 
+    card.style.left = `${clientX - offsetX}px`;
+    card.style.top = `${clientY - offsetY}px`;
+  }
 
-    function stopDrag() {
-      isDragging = false;
-      card.style.cursor = 'default';
-    }
+  function stopDrag() {
+    isDragging = false;
+    card.style.cursor = 'default';
+  }
 
-    card.addEventListener('mousedown', (e) => startDrag(e.clientX, e.clientY, e.target));
-    document.addEventListener('mousemove', (e) => doDrag(e.clientX, e.clientY));
-    document.addEventListener('mouseup', stopDrag);
+  card.addEventListener('mousedown', (e) => startDrag(e.clientX, e.clientY, e.target));
+  document.addEventListener('mousemove', (e) => doDrag(e.clientX, e.clientY));
+  document.addEventListener('mouseup', stopDrag);
 
-    card.addEventListener('touchstart', (e) => {
-      const touch = e.touches[0];
-      startDrag(touch.clientX, touch.clientY, e.target);
-    }, { passive: true });
+  card.addEventListener('touchstart', (e) => {
+    const touch = e.touches[0];
+    startDrag(touch.clientX, touch.clientY, e.target);
+  }, { passive: true });
 
-    document.addEventListener('touchmove', (e) => {
-      if (!isDragging) return;
-      if (e.cancelable) e.preventDefault(); 
-      const touch = e.touches[0];
-      doDrag(touch.clientX, touch.clientY);
-    }, { passive: false });
+  document.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    if (e.cancelable) e.preventDefault(); 
+    const touch = e.touches[0];
+    doDrag(touch.clientX, touch.clientY);
+  }, { passive: false });
 
-    document.addEventListener('touchend', stopDrag);
-  }, 100);
+  document.addEventListener('touchend', stopDrag);
 }
 
 
-btnNasa.addEventListener('click', () => {
+nasa.addEventListener('click', () => {
   appElement.classList.toggle('janela-oculta');
   if (!appElement.classList.contains('janela-oculta')) {
     makeElementDraggable('#app');
   }
 });
 
-btnCalc.addEventListener('click', () => {
+calc.addEventListener('click', () => {
   calcElement.classList.toggle('janela-oculta');
   if (!calcElement.classList.contains('janela-oculta')) {
     calcElement.style.left = '';
@@ -97,7 +95,7 @@ btnCalc.addEventListener('click', () => {
   }
 });
 
-btnSnake.addEventListener('click', () => {
+Snake.addEventListener('click', () => {
   snakeElement.classList.toggle('janela-oculta');
   if (!snakeElement.classList.contains('janela-oculta')) {
     resetGame();
@@ -113,7 +111,7 @@ function resetGame() {
   snake = [{ x: 10, y: 10 }];
   velocity = { x: 1, y: 0 };
   score = 0;
-  if (scoreElement) scoreElement.innerText = score;
+  scoreElement.innerText = score;
   spawnFood();
 }
 
@@ -123,7 +121,6 @@ function spawnFood() {
 }
 
 function gameLoop() {
-  if (!ctx) return;
 
   const head = { x: snake[0].x + velocity.x, y: snake[0].y + velocity.y };
 
@@ -141,7 +138,7 @@ function gameLoop() {
 
   if (head.x === food.x && head.y === food.y) {
     score += 10;
-    if (scoreElement) scoreElement.innerText = score;
+    scoreElement.innerText = score;
     spawnFood();
   } else {
     snake.pop();
@@ -196,7 +193,8 @@ numButtons.forEach(button => {
 
 opButtons.forEach(button => {
   button.addEventListener('click', () => {
-    currentExpression += button.innerText;
+    let realExpression=button.innerText.replaceAll('x', '*');
+    currentExpression += realExpression;
     updateScreen(currentExpression);
   });
 });
@@ -226,7 +224,7 @@ equalButton.addEventListener('click', () => {
 document.addEventListener('keydown', (e) => {
   if (calcElement.classList.contains('janela-oculta')) return;
 
-  const validKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '/', '%', '.'];
+  const validKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', 'x', '/', '%', '.'];
 
   if (validKeys.includes(e.key)) {
     currentExpression += e.key;
