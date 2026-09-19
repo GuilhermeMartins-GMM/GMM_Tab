@@ -68,7 +68,7 @@ window.addValor = function(valor) {
   calcScreen.value = currentExpression;
 };
 
-window.clear = function() {
+window.limpar = function() {
   currentExpression = '';
   calcScreen.value = '0';
 };
