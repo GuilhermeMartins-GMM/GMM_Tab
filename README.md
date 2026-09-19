@@ -13,4 +13,4 @@ NASA API (APOD), daily astronomical data stream.
 Google to the search input.
 
 AI USAGE:
-* Draggable Window.
+Draggable Window.
