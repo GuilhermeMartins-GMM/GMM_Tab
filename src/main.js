@@ -2,6 +2,12 @@ import './style.css';
 
 const API_KEY = import.meta.env?.VITE_NASA_API_KEY || 'DEMO_KEY';
 
+var spotlight = document.getElementById('spotlight');
+        
+window.onmousemove = function(e) {
+  spotlight.style.left = e.clientX + 'px';
+  spotlight.style.top = e.clientY + 'px';
+};
 
 const url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
 

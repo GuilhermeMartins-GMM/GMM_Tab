@@ -310,3 +310,17 @@ body {
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.6);
 }
+
+.spotlight {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.spotlight {
+    background: radial-gradient(circle, rgba(67, 87, 112, 0.1) 0%, transparent 80%);
+}
