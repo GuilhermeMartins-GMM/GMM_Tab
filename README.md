@@ -1,4 +1,4 @@
-# GMM's Tab
+# GMM Tab
 
 Made to stardance hack club, to test my coding and design abilities.
 
