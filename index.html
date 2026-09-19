@@ -4,30 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GMM's Tab</title>
-    <link rel="stylesheet" href="./src/style.css" />
-
+    <link rel="stylesheet" href="./style.css" />
   </head>
-
   <body>
-
     <div id="spotlight" class="spotlight"></div>
 
     <div class="boxInicial">
       <h2>Type Your Email</h2>
       
       <div class="localPesquisa">
-        <input type="text" id="inputPesquisa" placeholder="Just kidding, type your search" class="inputPesquisa">
+        <input type="text" id="inputPesquisa" placeholder="Just kidding..." class="inputPesquisa">
         <button class="search-btn" onclick="pesquisarGoogle()">Search</button>
       </div>
 
       <div class="botoes">
         <button id="nasa" class="tool-card" onclick="abrirNasa()">NASA</button>
-        <button id="Snake" class="tool-card format-link">(Later)</button>
+        <button id="freeMoney" class="tool-card" onclick="darDinheiro()">FREE MONEY</button>
         <button id="calc" class="tool-card" onclick="abrirCalc()">Calculator</button>
       </div>
     </div>
 
-    <div id="app" class="janela-oculta"></div>
+    <div id="app" class="janela-oculta app-box"></div>
     
     <div id="calc-app" class="calc-card janela-oculta">
       <input type="text" id="calc-screen" readonly value="0" />
@@ -55,6 +52,8 @@
       </div>
     </div>
 
-    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="./main.js"></script>
   </body>
 </html>
+
+    
