@@ -1,13 +1,6 @@
 import './style.css';
 
-const API_KEY = import.meta.env.VITE_NASA_API_KEY;
-
-let spotlight = document.getElementById('spotlight');
-        
-window.onmousemove = function(e) {
-  spotlight.style.left = e.clientX + 'px';
-  spotlight.style.top = e.clientY + 'px';
-};
+const API_KEY = import.meta.env.VITE_NASA_API_KEY;        
 
 const url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
 
