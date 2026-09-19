@@ -1,4 +1,4 @@
-#GMM's Website
+# GMM's Website
 
 Made to stardance hack club, to test my coding and design abilities.
 
@@ -13,6 +13,6 @@ Made to stardance hack club, to test my coding and design abilities.
 * NASA API (APOD), daily astronomical data stream.
 * Google to the search input form.
 
-### AI USAGE:
+#### AI USAGE:
 * Snake game.
 * Draggable Window adaptation for touch.
