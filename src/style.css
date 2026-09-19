@@ -7,9 +7,8 @@ Body {
     rgb(255, 255, 255) 35%, 
     rgb(255, 255, 255) 65%, 
     rgb(61, 26, 121) 100%
+    );
     font-family: sans-serif;
-    justify-content: center; 
-    align-items: center;
     overflow: hidden;
 }
 
