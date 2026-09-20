@@ -57,12 +57,12 @@ Body {
   display: flex;
   border-radius: 10px;
   justify-content: center;
-  gap: 13px;
+  gap: 10px;
   margin-top: 10px;
 }
 
 .tool-card {
-  padding: 10px;
+  padding: 15px 10px;
   cursor: pointer;
   font-weight: bold;
   transition: transform 0.2s;
@@ -73,7 +73,7 @@ white; border-radius: 10px}
 #freeMoney, #calc { background-color: rgba(162, 0, 0, 0.9);
 color: white; border-radius: 10px}
 
-#nasa, #freemoney, #calc{
+#nasa, #freeMoney, #calc{
   border: none;
   box-shadow: 0px 2px 4px rgba(0,0,0,0.2)
 }
@@ -97,13 +97,13 @@ color: white; border-radius: 10px}
 }
 
 .calc-card{
-  width: 200px;
+  width: 180px;
   background-color: rgb(10, 0, 35);
 }
 
 .app-box{
-  width: 270px;
-  background-color: rgba(12, 1, 71);
+  width: 290px;
+  background-color: rgb(14, 1, 52);
 }
 
 .nasa-media {
@@ -128,7 +128,8 @@ color: white; border-radius: 10px}
   gap: 4px;
 }
 
-.calc-buttons button {
+.calc-buttons button.btn-clear{
+  color: rgb(160, 0, 0);
   padding: 12px 5px;
   border-radius: 50%;
   background-color: rgba(59, 48, 90, 0.25);
@@ -137,23 +138,41 @@ color: white; border-radius: 10px}
   border: none
 }
 
-.calc-buttons button.btn-clear{
-  color: rgb(160, 0, 0);
-}
-
 .calc-buttons button.btn-back{
+  padding: 12px 5px;
+  border-radius: 50%;
+  background-color: rgba(59, 48, 90, 0.25);
+  cursor: pointer;
+  border: none;
   color: rgba(140, 0, 0, 0.8)
 }
 
 .calc-buttons button.btn-op{
+  padding: 12px 5px;
+  border-radius: 50%;
+  background-color: rgba(59, 48, 90, 0.25);
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
   color: rgba(220, 198, 255, 0.8);
 }
 
 .calc-buttons button.btn-num{
+  padding: 12px 5px;
+  border-radius: 50%;
+  background-color: rgba(59, 48, 90, 0.25);
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
   color: rgb(255, 255, 255);
 }
 
 .calc-buttons button.btn-equal{
+  padding: 12px 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
   color: rgba(255, 255, 255);
   background-color: rgb(95, 48, 120)
 }
