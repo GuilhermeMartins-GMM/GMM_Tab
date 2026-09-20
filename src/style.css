@@ -26,7 +26,7 @@ Body {
 }
 
 .inputPesquisa {
-  padding: 8px;
+  padding: 12px;
   background: rgba(122, 122, 122, 0.5);
   color: white;
   border-radius: 10px;
@@ -40,7 +40,7 @@ Body {
 }
 
 .search-btn {
-  padding: 8px 12px;
+  padding: 12px;
   border-radius: 10px;
   background-color: rgb(50, 22, 98);
   color: white;
@@ -57,10 +57,8 @@ Body {
   display: flex;
   border-radius: 10px;
   justify-content: center;
-  gap: 11px;
+  gap: 13px;
   margin-top: 10px;
-  border: none;
-  box-shadow: 0px 2px 4px rgba(0,0,0,0.2)
 }
 
 .tool-card {
@@ -74,6 +72,11 @@ Body {
 white; border-radius: 10px}
 #freeMoney, #calc { background-color: rgba(162, 0, 0, 0.9);
 color: white; border-radius: 10px}
+
+#nasa, #freemoney, #calc{
+  border: none;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.2)
+}
 
 .tool-card:hover {
   transform: translateY(-6px)
@@ -95,7 +98,7 @@ color: white; border-radius: 10px}
 
 .calc-card{
   width: 200px;
-  background-color: rgb(15, 0, 45);
+  background-color: rgb(10, 0, 35);
 }
 
 .app-box{
