@@ -52,16 +52,17 @@ Body {
   transition: transform 0.2s;
 }
 
-#nasa { background-color: blue; color: white; }
-#freeMoney { background-color: aqua; color: white; }
-#calc { background-color: mediumpurple; color: white; }
+#nasa { background-color: blue; color:
+white; border-radius: 10px}
+#freeMoney, #calc { background-color: mediumpurple;
+color: white; border-radius: 10px}
 
 .tool-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-8px)
 }
 
 .janela-oculta {
-  display: none !important;
+  display: none !important
 }
 
 .app-box, .calc-card {
@@ -85,6 +86,7 @@ Body {
   padding: 10px;
   font-size: 20px;
   margin-bottom: 10px;
+  border-radius: 10px;
 }
 
 .calc-buttons {
