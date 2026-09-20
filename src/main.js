@@ -21,9 +21,9 @@ window.abrirCalc = function() {
 
 window.darDinheiro = function() {
   if (navigator.vibrate) {
-    navigator.vibrate([200, 100, 200, 100, 500]); 
+    navigator.vibrate([200, 100, 500]); 
   }
-  alert('DUMB');
+  alert('Did you believe? DUMB!');
 };
 
 function makeDraggable(selector) {
