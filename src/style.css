@@ -23,11 +23,6 @@ Body {
   text-align: center;
   border-radius: 30px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s;
-}
-
-.boxInicial:hover{
-  transform: translate(-50%, -50%) translateY(-2px);
 }
 
 .inputPesquisa {
@@ -49,7 +44,8 @@ Body {
 .botoes {
   display: flex;
   border-radius: 10px;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 10px;
   margin-top: 10px;
 }
 
@@ -62,8 +58,8 @@ Body {
 
 #nasa { background-color: rgb(15, 2, 61); color:
 white; border-radius: 10px}
-#freeMoney, #calc { background-color: rgb(114, 1, 1);
-color: rgb(144, 1, 1); border-radius: 10px}
+#freeMoney, #calc { background-color: rgba(162, 0, 0, 0.9);
+color: white; border-radius: 10px}
 
 .tool-card:hover {
   transform: translateY(-6px)
@@ -84,11 +80,11 @@ color: rgb(144, 1, 1); border-radius: 10px}
 }
 
 .calc-card{
-  width: 250px;
+  width: 200px;
 }
 
 .app-box{
-  width: 230px;
+  width: 250px;
 }
 
 .nasa-media {
@@ -103,6 +99,8 @@ color: rgb(144, 1, 1); border-radius: 10px}
   font-size: 20px;
   margin-bottom: 10px;
   border-radius: 10px;
+  border: none;
+  font-weight: bold;
 }
 
 .calc-buttons {
@@ -114,9 +112,10 @@ color: rgb(144, 1, 1); border-radius: 10px}
 .calc-buttons button {
   padding: 12px 5px;
   border-radius: 50%;
-  background-color: rgba(38, 22, 88, 0.1);
+  background-color: rgba(38, 22, 88, 0.2);
   cursor: pointer;
   font-weight: bold;
+  border: none
 }
 
 .calc-buttons button.btn-clear{
@@ -125,4 +124,8 @@ color: rgb(144, 1, 1); border-radius: 10px}
 
 .calc-buttons button.btn-back{
   color: rgba(140, 0, 0, 0.8)
+}
+
+.calc-buttons button.btn-op{
+  color: rgba(220, 198, 255, 0.8);
 }
