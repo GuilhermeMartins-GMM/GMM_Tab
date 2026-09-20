@@ -13,23 +13,26 @@ Body {
 }
 
 .boxInicial {
-  margin: 40% auto;
+  margin: 300px auto;
   width: 320px;
   background-color: white;
   padding: 20px;
   text-align: center;
   border-radius: 30px;
+  border: 5px outset #ccc;
 }
 
 .inputPesquisa {
   padding: 8px;
-  background: black;
+  background: darkgray;
   color: white;
+  border-radius: 10px;
   margin-bottom: 15px;
 }
 
 .search-btn {
   padding: 8px 12px;
+  border-radius: 10px;
   background-color: gray;
   color: white;
   cursor: pointer;
@@ -37,6 +40,7 @@ Body {
 
 .botoes {
   display: flex;
+  border-radius: 10px;
   justify-content: space-around;
   margin-top: 20px;
 }
@@ -64,7 +68,7 @@ Body {
   position: absolute;
   top: 50px;
   left: 50px;
-  background-color: silver;
+  background-color: midnightblue;
   border-radius: 25px;
   padding: 10px;
   width: 250px;
