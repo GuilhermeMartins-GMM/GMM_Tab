@@ -13,18 +13,26 @@ Body {
 }
 
 .boxInicial {
-  margin: 300px auto;
-  width: 320px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 340px;
   background-color: white;
   padding: 20px;
   text-align: center;
   border-radius: 30px;
-  border: 5px outset #ccc;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s;
+}
+
+.boxInicial:hover{
+  transform: translate(-50%, -50%) translateY(-2px);
 }
 
 .inputPesquisa {
   padding: 8px;
-  background: darkgray;
+  background: rgba(122, 122, 122, 0.8);
   color: white;
   border-radius: 10px;
   margin-bottom: 15px;
@@ -33,7 +41,7 @@ Body {
 .search-btn {
   padding: 8px 12px;
   border-radius: 10px;
-  background-color: gray;
+  background-color: rgb(50, 22, 98);
   color: white;
   cursor: pointer;
 }
@@ -42,7 +50,7 @@ Body {
   display: flex;
   border-radius: 10px;
   justify-content: space-around;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .tool-card {
@@ -52,13 +60,13 @@ Body {
   transition: transform 0.2s;
 }
 
-#nasa { background-color: blue; color:
+#nasa { background-color: rgb(15, 2, 61); color:
 white; border-radius: 10px}
-#freeMoney, #calc { background-color: mediumpurple;
-color: white; border-radius: 10px}
+#freeMoney, #calc { background-color: rgb(114, 1, 1);
+color: rgb(144, 1, 1); border-radius: 10px}
 
 .tool-card:hover {
-  transform: translateY(-8px)
+  transform: translateY(-6px)
 }
 
 .janela-oculta {
@@ -69,19 +77,27 @@ color: white; border-radius: 10px}
   position: absolute;
   top: 50px;
   left: 50px;
-  background-color: midnightblue;
+  background-color: rgba(12, 1, 71, 0.9);
   border-radius: 25px;
   padding: 10px;
+  color: white;
+}
+
+.calc-card{
   width: 250px;
-  color: black;
-  cursor: move;
+}
+
+.app-box{
+  width: 230px;
 }
 
 .nasa-media {
   max-width: 100%;
 }
 
-#calc-screen {
+#calc-screen { 
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(248, 235, 255);
   width: 90%;
   padding: 10px;
   font-size: 20px;
@@ -92,13 +108,21 @@ color: white; border-radius: 10px}
 .calc-buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2px;
+  gap: 4px;
 }
 
 .calc-buttons button {
-  padding: 15px 5px;
-  border-radius: 10px;
-  background-color: mediumpurple;
+  padding: 12px 5px;
+  border-radius: 50%;
+  background-color: rgba(38, 22, 88, 0.1);
   cursor: pointer;
   font-weight: bold;
+}
+
+.calc-buttons button.btn-clear{
+  color: rgb(160, 0, 0);
+}
+
+.calc-buttons button.btn-back{
+  color: rgba(140, 0, 0, 0.8)
 }
