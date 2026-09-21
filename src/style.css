@@ -30,15 +30,14 @@ Body {
 }
 
 .inputPesquisa {
-  padding: 11px 15px;
+  padding: 13px 15px;
   width: 200px;
   background: rgb(6, 122, 97);
   color: white;
   border-radius: 10px;
   margin-bottom: 15px;
   border: none;
-  margin-right: 5px;
-  margin-top: 40px
+  margin-right: 5px
 }
 
 .inputPesquisa::placeholder{
@@ -46,7 +45,7 @@ Body {
 }
 
 .search-btn {
-  padding: 11px 14px;
+  padding: 13px 16px;
   border-radius: 10px;
   background-color: rgb(50, 22, 98);
   color: white;
@@ -137,7 +136,7 @@ Body {
 
 .calc-buttons button.btn-clear{
   color: rgb(160, 0, 0);
-  height: 80px; width: 80px;
+  height: 50px; width: 50px;
   border-radius: 50%;
   background-color: rgba(59, 48, 90, 0.25);
   cursor: pointer;
@@ -146,7 +145,7 @@ Body {
 }
 
 .calc-buttons button.btn-back{
-  height: 80px; width: 80px;
+  height: 50px; width: 50px;
   border-radius: 50%;
   background-color: rgba(59, 48, 90, 0.25);
   cursor: pointer;
@@ -155,7 +154,7 @@ Body {
 }
  
 .calc-buttons button.btn-op{
-  height: 80px; width: 80px;
+  height: 50px; width: 50px;
   border-radius: 50%;
   background-color: rgba(59, 48, 90, 0.25);
   cursor: pointer;
@@ -165,7 +164,7 @@ Body {
 }
 
 .calc-buttons button.btn-num{
-  height: 80px; width: 80px;
+  height: 50px; width: 50px;
   border-radius: 50%;
   background-color: rgba(59, 48, 90, 0.25);
   cursor: pointer;
@@ -175,7 +174,7 @@ Body {
 }
 
 #btn-equal{
-  height: 80px; width: 80px;
+  height: 50px; width: 50px;
   border-radius: 50%; 
   cursor: pointer;
   border: none;
