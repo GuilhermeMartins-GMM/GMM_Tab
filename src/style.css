@@ -17,7 +17,7 @@ Body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 340px;
+  width: 400px;
   background-color: white;
   padding: 40px;
   text-align: center;
@@ -30,13 +30,14 @@ Body {
 }
 
 .inputPesquisa {
-  padding: 12px;
+  padding: 12px 15px;
+  width: 100px;
   background: rgb(6, 122, 97);
   color: white;
   border-radius: 10px;
   margin-bottom: 15px;
   border: none;
-  margin-right: 10px
+  margin-right: 5px
 }
 
 .inputPesquisa::placeholder{
@@ -66,22 +67,19 @@ Body {
 }
 
 .tool-card {
-  padding: 10px 16px;
+  padding: 10px 20px;
   cursor: pointer;
   font-weight: bold;
   transition: transform 0.2s;
 }
 
-
 #freeMoney, #calc, #nasa { 
-  background-color: linear-gradient(
+  background: linear-gradient(
     45deg,
     rgb(61, 26, 121),
     rgb(7, 141, 112)
-    );
-  color: white; border-radius: 10px}
-
-#nasa, #freeMoney, #calc{ 
+  );
+  color: white; border-radius: 10px;
   border: none;
   box-shadow: 0px 2px 4px rgba(0,0,0,0.2)
 }
@@ -137,7 +135,7 @@ Body {
 
 .calc-buttons button.btn-clear{
   color: rgb(160, 0, 0);
-  padding: 16px 10px;
+  padding: 16px 12px;
   border-radius: 50%;
   background-color: rgba(59, 48, 90, 0.25);
   cursor: pointer;
@@ -146,16 +144,16 @@ Body {
 }
 
 .calc-buttons button.btn-back{
-  padding: 16px 10px;
+  padding: 16px 12px;
   border-radius: 50%;
   background-color: rgba(59, 48, 90, 0.25);
   cursor: pointer;
   border: none;
   color: rgba(140, 0, 0, 0.8)
 }
-
+ 
 .calc-buttons button.btn-op{
-  padding: 16px 10px;
+  padding: 16px 12px;
   border-radius: 50%;
   background-color: rgba(59, 48, 90, 0.25);
   cursor: pointer;
@@ -165,17 +163,17 @@ Body {
 }
 
 .calc-buttons button.btn-num{
-  padding: 16px 10px;
+  padding: 16px 12px;
   border-radius: 50%;
   background-color: rgba(59, 48, 90, 0.25);
   cursor: pointer;
   font-weight: bold;
-  border: none;
+  border: none; 
   color: rgb(255, 255, 255);
 }
 
 #btn-equal{
-  padding: 16px 10px; 
+  padding: 16px 12px; 
   border-radius: 50%;
   cursor: pointer;
   border: none;
