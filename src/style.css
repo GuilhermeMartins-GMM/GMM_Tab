@@ -81,7 +81,7 @@ Body {
     );
   color: white; border-radius: 10px}
 
-#nasa, #freeMoney, #calc{
+#nasa, #freeMoney, #calc{ 
   border: none;
   box-shadow: 0px 2px 4px rgba(0,0,0,0.2)
 }
