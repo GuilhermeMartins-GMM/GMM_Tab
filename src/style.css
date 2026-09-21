@@ -30,8 +30,8 @@ Body {
 }
 
 .inputPesquisa {
-  padding: 12px 15px;
-  width: 100px;
+  padding: 9px 15px;
+  width: 200px;
   background: rgb(6, 122, 97);
   color: white;
   border-radius: 10px;
@@ -45,12 +45,13 @@ Body {
 }
 
 .search-btn {
-  padding: 12px;
+  padding: 9px 12px;
   border-radius: 10px;
   background-color: rgb(50, 22, 98);
   color: white;
   cursor: pointer;
   border:none;
+  font-weight: bold;
   transition: transform 0.2s
 }
 
@@ -67,7 +68,7 @@ Body {
 }
 
 .tool-card {
-  padding: 10px 20px;
+  padding: 10px 22px;
   cursor: pointer;
   font-weight: bold;
   transition: transform 0.2s;
@@ -85,7 +86,7 @@ Body {
 }
 
 .tool-card:hover {
-  transform: translateY(-6px)
+  transform: translateY(-6px) 
 }
 
 .janela-oculta {
@@ -107,7 +108,7 @@ Body {
 }
 
 .app-box{
-  width: 290px;
+  width: 310px;
   background-color: rgb(10, 1, 37);
 }
 
@@ -135,7 +136,7 @@ Body {
 
 .calc-buttons button.btn-clear{
   color: rgb(160, 0, 0);
-  padding: 16px 12px;
+  padding: 16px 14px;
   border-radius: 50%;
   background-color: rgba(59, 48, 90, 0.25);
   cursor: pointer;
@@ -144,16 +145,16 @@ Body {
 }
 
 .calc-buttons button.btn-back{
-  padding: 16px 12px;
+  padding: 16px 14px;
   border-radius: 50%;
   background-color: rgba(59, 48, 90, 0.25);
   cursor: pointer;
   border: none;
-  color: rgba(140, 0, 0, 0.8)
+  color: rgba(140, 0, 0, 0.9)
 }
  
 .calc-buttons button.btn-op{
-  padding: 16px 12px;
+  padding: 16px 14px;
   border-radius: 50%;
   background-color: rgba(59, 48, 90, 0.25);
   cursor: pointer;
@@ -163,7 +164,7 @@ Body {
 }
 
 .calc-buttons button.btn-num{
-  padding: 16px 12px;
+  padding: 16px 14px;
   border-radius: 50%;
   background-color: rgba(59, 48, 90, 0.25);
   cursor: pointer;
@@ -173,12 +174,12 @@ Body {
 }
 
 #btn-equal{
-  padding: 16px 12px; 
-  border-radius: 50%;
+  padding: 16px 14px; 
+  border-radius: 50%; 
   cursor: pointer;
   border: none;
   color: rgb(255, 255, 255);
-  background-color: rgb(95, 48, 120);
+  background-color: rgb(112, 44, 190);
 }
 
 input:focus-visible {
