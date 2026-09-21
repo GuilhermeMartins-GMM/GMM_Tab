@@ -25,19 +25,22 @@ Body {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
+.boxInicial h2{
+  color: rgb(61, 26, 121)
+}
+
 .inputPesquisa {
   padding: 12px;
-  background: white;
-  color: black;
+  background: rgb(6, 122, 97);
+  color: white;
   border-radius: 10px;
   margin-bottom: 15px;
   border: none;
-  box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
   margin-right: 10px
 }
 
 .inputPesquisa::placeholder{
-  color: rgba(0, 0, 0, 0.9)
+  color: rgba(255, 255, 255, 0.5)
 }
 
 .search-btn {
@@ -69,10 +72,14 @@ Body {
   transition: transform 0.2s;
 }
 
-#nasa { background-color: rgb(15, 2, 61); color:
-white; border-radius: 10px}
-#freeMoney, #calc { background-color: rgba(162, 0, 0, 0.9);
-color: white; border-radius: 10px}
+
+#freeMoney, #calc, #nasa { 
+  background-color: linear-gradient(
+    45deg,
+    rgb(61, 26, 121),
+    rgb(7, 141, 112)
+    );
+  color: white; border-radius: 10px}
 
 #nasa, #freeMoney, #calc{
   border: none;
@@ -98,12 +105,12 @@ color: white; border-radius: 10px}
 
 .calc-card{
   width: 240px;
-  background-color: rgb(10, 0, 35);
+  background-color: rgb(8, 0, 26);
 }
 
 .app-box{
   width: 290px;
-  background-color: rgb(14, 1, 52);
+  background-color: rgb(10, 1, 37);
 }
 
 .nasa-media {
@@ -130,7 +137,7 @@ color: white; border-radius: 10px}
 
 .calc-buttons button.btn-clear{
   color: rgb(160, 0, 0);
-  padding: 16px 9px;
+  padding: 16px 10px;
   border-radius: 50%;
   background-color: rgba(59, 48, 90, 0.25);
   cursor: pointer;
@@ -139,7 +146,7 @@ color: white; border-radius: 10px}
 }
 
 .calc-buttons button.btn-back{
-  padding: 16px 9px;
+  padding: 16px 10px;
   border-radius: 50%;
   background-color: rgba(59, 48, 90, 0.25);
   cursor: pointer;
@@ -148,7 +155,7 @@ color: white; border-radius: 10px}
 }
 
 .calc-buttons button.btn-op{
-  padding: 16px 9px;
+  padding: 16px 10px;
   border-radius: 50%;
   background-color: rgba(59, 48, 90, 0.25);
   cursor: pointer;
@@ -158,7 +165,7 @@ color: white; border-radius: 10px}
 }
 
 .calc-buttons button.btn-num{
-  padding: 16px 9px;
+  padding: 16px 10px;
   border-radius: 50%;
   background-color: rgba(59, 48, 90, 0.25);
   cursor: pointer;
@@ -167,9 +174,8 @@ color: white; border-radius: 10px}
   color: rgb(255, 255, 255);
 }
 
-.calc-buttons button.btn-equal{
-  width: 30px;
-  height: 30px; 
+#btn-equal{
+  padding: 16px 10px; 
   border-radius: 50%;
   cursor: pointer;
   border: none;
