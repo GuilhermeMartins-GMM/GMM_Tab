@@ -12,5 +12,7 @@ External:
 NASA API (APOD), daily astronomical data stream.
 Google to the search input.
 
+![Site exemple](exemplo.jpg)
+
 AI USAGE:
 Draggable Window.
